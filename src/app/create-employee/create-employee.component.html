@@ -1,0 +1,40 @@
+<div class="col-md-6 offset-md-3 container">
+    <br>
+<h4>Create Employee</h4>
+<form #userForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control" id="firstName"
+        [(ngModel)]="employee.firstName" name="firstName">
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control" id="lastName"
+        [(ngModel)]="employee.lastName" name="lastName">
+    </div>
+
+    <div class="form-group">
+        <label for="emailId">Email Id</label>
+        <input type="email" class="form-control" id="emailId"
+        [(ngModel)]="employee.emailId" name="emailId">
+    </div>
+
+    <div class="form-group">
+        <label for="department">Department</label>
+      <select class="form-control" id="department" name="department" [(ngModel)]="employee.department">
+          <option value="Europe CSD">Europe CSD</option>
+          <option value="Financial Services">Financial Services</option>
+          <option value="Apps NA">Apps NA</option>
+          <option value="Cloud Infrastructure Services">Cloud Infrastructure Services</option>
+        </select>
+    </div>
+    <br>
+
+    <div>
+        <button type="submit" class="btn btn-success">Submit</button>&nbsp;
+        <button type="button" (click)="resetUserForm(userForm)" class="btn btn-primary">Reset</button>
+    </div>
+
+</form>
+</div>
