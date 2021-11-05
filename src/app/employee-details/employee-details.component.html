@@ -1,15 +1,54 @@
-<h4 class="text-center">View Employee Details</h4>
-<div class="container text-center">
-    <div>
-        <label><b>First Name: </b></label>{{employee.firstName}}
-    </div>
-    <div>
-        <label><b>Last Name: </b></label>{{employee.lastName}}
-    </div>
-    <div>
-        <label><b>Email Id: </b></label>{{employee.emailId}}
-    </div>
-    <div>
-        <label><b>Department: </b></label>{{employee.department}}
-    </div>
-</div>
+
+
+<mat-card class="example-card" >
+    <mat-card-header>
+      <mat-card-title>Employee Details</mat-card-title>
+      
+    </mat-card-header>
+    <img mat-card-image src="./assets/images/profilepic.png">
+    <mat-card-content>
+      <table>
+        <tr>
+          <td><span style="font-weight:bold">First Name:</span></td>&nbsp;
+          <td>{{employee.firstName}}</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:bold">Last Name:</span></td>&nbsp;
+          <td>{{employee.lastName}}</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:bold">Email Id:</span></td>&nbsp;
+          <td>{{employee.emailId}}</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:bold">Department:</span></td>&nbsp;
+          <td>{{employee.department}}</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:bold">DOJ:</span></td>&nbsp;
+          <td>{{employee.joiningDate}}</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:bold">Location:</span></td>&nbsp;
+          <td>{{employee.location}}</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:bold">Contact:</span></td>&nbsp;
+          <td>{{employee.phoneNumber}}</td>
+        </tr>
+      </table>
+        
+     
+    </mat-card-content>
+  
+    
+  
+    
+  </mat-card>
+
+  <br>
+  <div align="end">
+    <button mat-button color="primary" (click)="onBack()">
+      <mat-icon>arrow_back_ios</mat-icon>Back
+  </button>
+  </div> 

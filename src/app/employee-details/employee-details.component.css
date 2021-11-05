@@ -1,0 +1,35 @@
+.example-card {
+  max-width: 400px;
+  align-self: center;
+}
+.mat-card-image {
+  max-width: 200px;
+  padding-left: 50px;
+}
+.mat-card-title {
+  align-items: center;
+}
+
+.mat-card {
+  background-image: "./assets/images/download.jpg";
+  padding-top: 50px;
+  align-self: center;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-left: 300px;
+  margin-right: 300px;
+
+  padding-bottom: 50px;
+}
+
+.mat-card-content {
+  align-items: center;
+}
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}

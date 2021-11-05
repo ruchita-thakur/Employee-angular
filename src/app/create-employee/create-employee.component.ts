@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
@@ -7,41 +8,54 @@ import { EmployeeService } from '../employee.service';
 @Component({
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
-  styleUrls: ['./create-employee.component.css']
+  styleUrls: ['./create-employee.component.css'],
 })
 export class CreateEmployeeComponent implements OnInit {
+  employee: Employee = new Employee();
+  maxDate = new Date();
 
-  employee:Employee = new Employee();
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router,
+    private dialogRef: MatDialogRef<CreateEmployeeComponent>
+  ) {}
+  ngOnInit(): void {}
 
-  constructor(private employeeService:EmployeeService,
-    private router:Router) { }
+  emailId = new FormControl('', [Validators.required, Validators.email]);
 
-  ngOnInit(): void {
+  getErrorMessage() {
+    if (this.emailId.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.emailId.hasError('email') ? 'Not a valid email' : '';
   }
 
-  saveEmployee(){
-    this.employeeService.createEmployee(this.employee).subscribe(data=>
-      {
-        console.log(data)
-        this.goToEmployeeList();
+  saveEmployee() {
+    this.employeeService.createEmployee(this.employee).subscribe(
+      (data) => {
+        console.log(data);
+        //this.goToHomePage();
+        //this.goToEmployeeList();
       },
-      error=>console.log(error)
-      );
+      (error) => console.log(error)
+    );
   }
-
-  goToEmployeeList(){
-    this.router.navigate(['/employees']);
+  goToHomePage() {
+    this.router.navigate(['/home']);
   }
+  onSubmit() {
+    this.employee.emailId = this.emailId.value;
+    console.log(this.employee);
 
-  onSubmit(){
-    console.log(this.employee)
     this.saveEmployee();
 
+    this.dialogRef.close(this.employee);
   }
-
-  resetUserForm(userForm: NgForm) {
-    userForm.resetForm();;
-} 
-
-
+  dismiss() {
+    this.dialogRef.close(null);
+  }
+  goToEmployeeList() {
+    this.router.navigate(['/employees']);
+  }
 }

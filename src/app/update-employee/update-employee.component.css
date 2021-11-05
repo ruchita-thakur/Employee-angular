@@ -1,0 +1,17 @@
+.example-container > * {
+  width: 100%;
+}
+.mat-card {
+  padding-top: 50px;
+  align-self: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 300px;
+  margin-right: 300px;
+
+  padding-bottom: 50px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}

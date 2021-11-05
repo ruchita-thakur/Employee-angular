@@ -1,0 +1,24 @@
+<p>
+    <mat-toolbar color="primary">
+  
+      <span>Employee Management System</span>
+      <span class="example-spacer"></span>
+  
+      <span class="example-spacer"></span>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openAddEmployeeDialog()">Add new employee</button>
+        <button mat-menu-item (click)="goToEmployeeList()">View all employees</button>
+      </mat-menu>
+      
+      <button mat-button [matMenuTriggerFor]="menu1">
+        <mat-icon>home</mat-icon>
+      </button>
+      <mat-menu #menu1="matMenu">
+        <button mat-button mat-menu1-item (click)="goToHomePage()">Home</button>
+      </mat-menu>
+      
+      
+    </mat-toolbar>

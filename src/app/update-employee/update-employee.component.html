@@ -1,39 +1,59 @@
-<div class="col-md-6 offset-md-3 container">
-    <br>
-<h4>Update Employee</h4>
-<form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="firstName">First name</label>
-        <input type="text" class="form-control" id="firstName"
-        [(ngModel)]="employee.firstName" name="firstName">
-    </div>
-
-    <div class="form-group">
-        <label for="lastName">Last name</label>
-        <input type="text" class="form-control" id="lastName"
-        [(ngModel)]="employee.lastName" name="lastName">
-    </div>
-
-    <div class="form-group">
-        <label for="emailId">Email Id</label>
-        <input type="email" class="form-control" id="emailId"
-        [(ngModel)]="employee.emailId" name="emailId">
-    </div>
-
-    <div class="form-group">
-        <label for="department">Department</label>
-      <select class="form-control" id="department" name="department" [(ngModel)]="employee.department">
-          <option value="Europe CSD">Europe CSD</option>
-          <option value="Financial Services">Financial Services</option>
-          <option value="Apps NA">Apps NA</option>
-          <option value="Cloud Infrastructure Services">Cloud Infrastructure Services</option>
-        </select>
-    </div>
-    <br>
-
-    <div>
-        <button type="submit" class="btn btn-success">Update</button>
-    </div>
-
-</form>
-</div>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Update Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input matInput [(ngModel)]="employee.firstName" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input matInput [(ngModel)]="employee.lastName" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Email Id</mat-label>
+                <input matInput [(ngModel)]="employee.emailId" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Select Department</mat-label>
+                <mat-select [(ngModel)]="employee.department" required>
+                    <mat-option value="Europe CSD">Europe CSD</mat-option>
+                    <mat-option value="Financial Services">Financial Services</mat-option>
+                    <mat-option value="Apps NA">Apps NA</mat-option>
+                    <mat-option value="CIS">CIS</mat-option>
+                    <mat-option value="Europe SAP">Europe SAP</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Joining Date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="employee.joiningDate" required [max]="maxDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Select Location</mat-label>
+                <mat-select [(ngModel)]="employee.location" required>
+                    <mat-option value="Pune">Pune</mat-option>
+                    <mat-option value="Mumbai">Mumbai</mat-option>
+                    <mat-option value="Bangalore">Bangalore</mat-option>
+                    <mat-option value="Hyderabad">Hyderabad</mat-option>
+                    <mat-option value="Chennai">Chennai</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Phone Number</mat-label>
+                <input matInput [(ngModel)]="employee.phoneNumber" required maxlength="10" placeholder="98765-81728">
+                <mat-hint>10 digits</mat-hint>
+            </mat-form-field>
+            <p>
+            <div>
+                <button mat-button color="primary" (click)="onSubmit()">
+                    <mat-icon>save</mat-icon>Save
+                </button>&nbsp;
+                <button mat-button color="primary" (click)="dismiss()">
+                    <mat-icon>cancel</mat-icon>Cancel
+                </button>
+            </div>
+        </div>

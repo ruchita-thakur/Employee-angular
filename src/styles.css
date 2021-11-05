@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 .footer {
   padding-top: 10px;
   padding-bottom: 0px;
@@ -10,4 +11,13 @@
 }
 .navbar {
   background-color: plum;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

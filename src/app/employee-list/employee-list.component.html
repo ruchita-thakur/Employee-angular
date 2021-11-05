@@ -1,26 +1,67 @@
-<h3 class="text-center">Employees List</h3>
-<br>
-<table class="table table-striped center">
-    <thead>
+<div class="mat-elevation-z8">
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <span>
+    <input matInput (keyup)="applyFilter($event)" #input>
+    <mat-icon>search</mat-icon></span>
+  </mat-form-field>
+  
+
+<table mat-table [dataSource]="dataSource" matSort>
+  
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Sr. No. </th>
+      <!-- <td mat-cell *matCellDef="let employee"> {{employee.id}} </td> -->
+      <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+      <td mat-cell *matCellDef="let employee"> {{employee.firstName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+      <td mat-cell *matCellDef="let employee"> {{employee.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="emailId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email Id </th>
+        <td mat-cell *matCellDef="let employee"> {{employee.emailId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="department" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+        <td mat-cell *matCellDef="let employee"> {{employee.department}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="actions">
+        <tr><th mat-header-cell *matHeaderCellDef> Actions </th></tr>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email Id</th>
-            <th>Department</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let employee of employees">
-            <td>{{employee.firstName}}</td>
-            <td>{{employee.lastName}}</td>
-            <td>{{employee.emailId}}</td>
-            <td>{{employee.department}}</td>
-            <td>
-                <button class="btn btn-info" (click)="updateEmployee(employee.id)">Update</button>
-                <button class="btn btn-danger" (click)="deleteEmployee(employee.id)" style="margin-left: 10px;">Delete</button>
-                <button class="btn btn-info" (click)="employeeDetails(employee.id)" style="margin-left: 10px;">View</button>
-            </td>
-            </tr>
-    </tbody>
-</table>
+          <td mat-cell *matCellDef="let employee" style="width:20%">
+            <button mat-icon-button color="primary" (click)="employeeDetails(employee.id)" title="View Contact"><mat-icon>visibility</mat-icon></button>&nbsp;
+            <button mat-icon-button color="accent" (click)="updateEmployee(employee.id)" title="Edit Contact"><mat-icon>edit</mat-icon></button>&nbsp;
+            <button mat-icon-button color="warn" (click)="deleteEmployee(employee.id)" title="Delete Contact"><mat-icon>delete</mat-icon></button>
+          </td>
+        <tr>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+  </table>
+  <mat-paginator  [pageSizeOptions]="[3,5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  </div>
+  <br>
+  <div align="end">
+    <button mat-button color="primary" (click)="onBack()">
+      <mat-icon>arrow_back_ios</mat-icon>Back
+  </button>
+  </div> 
+
+  
